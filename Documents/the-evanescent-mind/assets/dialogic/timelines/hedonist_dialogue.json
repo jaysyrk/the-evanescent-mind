@@ -1,0 +1,138 @@
+{
+  "events": [
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "text": "[She's moving even when she's still — there's a restless brightness in her, like a song on the edge of becoming noise.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Hedonist",
+      "text": "You carry a lot of grief for someone who hasn't been touched enough."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "I'm not here to be touched.", "condition": "", "destination": "choice_deflect"},
+        {"text": "What does that have to do with anything?", "condition": "", "destination": "choice_engage"},
+        {"text": "You sound like a self-help poster.", "condition": "", "destination": "choice_contempt"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_contempt",
+      "character": "The Hedonist",
+      "text": "Self-help posters don't sweat."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "text": "[She dances slightly as she talks. It's irritating. You can't look away.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Hedonist",
+      "text": "Come back when you've let yourself want something for five minutes without explaining why it's stupid."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "end_contempt"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_deflect",
+      "character": "The Hedonist",
+      "text": "That's fascinating. You came all the way here to not want things."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Hedonist",
+      "text": "Tell me: when you imagine ending all suffering — what does that feel like? In your body?"
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "Relief.", "condition": "", "destination": "deflect_relief"},
+        {"text": "I don't feel things in my body.", "condition": "", "destination": "deflect_dissociate"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "deflect_relief",
+      "character": "The Hedonist",
+      "text": "Relief is a feeling. A very good one. You're not as disconnected as you think."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "deflect_dissociate",
+      "character": "The Hedonist",
+      "text": "Hm. That's the saddest thing you've said."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Hedonist",
+      "text": "You can't end suffering on behalf of people who might feel joy. You've never felt the joy part long enough to remember it."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_engage",
+      "character": "The Hedonist",
+      "text": "Everything. Every single thing. Pain is just pleasure that went wrong."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Hedonist",
+      "text": "You want to end suffering. Fine. But you'd be ending the capacity for it too. They're the same muscle."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "That sounds like a reason to end both.", "condition": "", "destination": "engage_push"},
+        {"text": "I've felt joy. It wasn't worth what comes after.", "condition": "", "destination": "engage_honest"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "engage_push",
+      "character": "The Hedonist",
+      "text": "Maybe. But you're making that choice for the people who disagree."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Hedonist",
+      "text": "There are people who'd choose more life, even the hard kind. You'd overrule them."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "engage_honest",
+      "character": "The Hedonist",
+      "text": "..."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Hedonist",
+      "text": "Yeah. I know that place. I've sat in that place. It's just — the joy came back. It always does."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Hedonist",
+      "text": "Not the same joy. Different. Lower. But real."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_2"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "events": [
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "text": "[He's standing at the exact centre of the crossroads. Not waiting. Just standing. Like a person who decided to stop somewhere and ran out of reasons to move.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Nihilist",
+      "text": "Nothing means anything."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Nihilist",
+      "text": "Including your ritual. Including the pieces you've gathered. Including this."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "Then why are you here?", "condition": "", "destination": "choice_why"},
+        {"text": "I know.", "condition": "", "destination": "choice_agree"},
+        {"text": "Then why does it hurt?", "condition": "", "destination": "choice_hurt"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_why",
+      "character": "The Nihilist",
+      "text": "..."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Nihilist",
+      "text": "I asked myself that for a long time."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Nihilist",
+      "text": "I think I'm here because some part of me didn't listen to the part that knew better. And I'm grateful for that."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_agree",
+      "character": "The Nihilist",
+      "text": "Yes."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "text": "[Silence. A long one. Neither of you fills it.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Nihilist",
+      "text": "You've travelled a long way to stand here and know that."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Nihilist",
+      "text": "Something in you was still looking. Even knowing it wouldn't find anything. I think that matters more than the finding."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_hurt",
+      "character": "The Nihilist",
+      "text": "Because the pain response doesn't care about your metaphysics."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Nihilist",
+      "text": "Meaning is optional. Sensation isn't. You're stuck with both whether you endorse them or not."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "That sounds like a reason to end it.", "condition": "", "destination": "hurt_end"},
+        {"text": "That sounds like a reason to stay.", "condition": "", "destination": "hurt_stay"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "hurt_end",
+      "character": "The Nihilist",
+      "text": "Sure. Or a reason that neither ending nor staying is the point."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Nihilist",
+      "text": "The point, if there is one, is what you do between the beginning and whatever comes after."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "hurt_stay",
+      "character": "The Nihilist",
+      "text": "Hm."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Nihilist",
+      "text": "Maybe it is."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    }
+  ]
+}

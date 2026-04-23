@@ -1,0 +1,138 @@
+{
+  "events": [
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "text": "[She's surrounded by books. All of them open. None of them to the same page. She looks like someone who has read everything and is still not done.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Theist",
+      "text": "You love someone."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Theist",
+      "text": "And you've decided that love isn't evidence of anything."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "Love is chemistry. It's not evidence of God.", "condition": "", "destination": "choice_chemistry"},
+        {"text": "I don't see how that's relevant.", "condition": "", "destination": "choice_deflect"},
+        {"text": "What do you think it's evidence of?", "condition": "", "destination": "choice_open"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_chemistry",
+      "character": "The Theist",
+      "text": "I'm not arguing for God. I'm arguing for love as a phenomenon that resists reduction."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Theist",
+      "text": "You can explain attraction with oxytocin. You cannot explain why this specific person makes you feel like you've finally been understood."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "That's just projection.", "condition": "", "destination": "chem_projection"},
+        {"text": "I know it might not be real.", "condition": "", "destination": "chem_honest"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "chem_projection",
+      "character": "The Theist",
+      "text": "Maybe. But you've built an entire cosmology to justify what the projection means to you."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Theist",
+      "text": "That's not chemistry. That's faith. Just pointed in a different direction."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "chem_honest",
+      "character": "The Theist",
+      "text": "And you love her anyway."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Theist",
+      "text": "That gap — between knowing and still feeling — that's the thing I call sacred. It doesn't need a name beyond that."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_2"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_deflect",
+      "character": "The Theist",
+      "text": "Everything is relevant when you're deciding whether the world should exist."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Theist",
+      "text": "You want to end it, and the only thing giving you pause is a person. I find that interesting."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_open",
+      "character": "The Theist",
+      "text": "Something you can't control. Something that arrived without being invited and refuses to be reasoned away."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Theist",
+      "text": "I call that transcendence. You might call it a flaw in your argument. Either way, it's there."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "I don't know what to do with that.", "condition": "", "destination": "open_uncertain"},
+        {"text": "That still doesn't mean anything matters.", "condition": "", "destination": "open_push"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "open_uncertain",
+      "character": "The Theist",
+      "text": "That's honest. Most people try to resolve it too quickly."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Theist",
+      "text": "Maybe you don't have to do anything with it. Maybe you just have to let it be true."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_2"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "open_push",
+      "character": "The Theist",
+      "text": "You're right. It doesn't. Not in the cosmic sense."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Theist",
+      "text": "But it matters to you. And you matter to her. That's a small chain of meaning. Tiny, fragile, real."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_2"
+    }
+  ]
+}

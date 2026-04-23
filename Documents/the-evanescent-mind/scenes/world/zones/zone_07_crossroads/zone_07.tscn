@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://zone_07_crossroads"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_entry"]
+size = Vector3(40, 4, 40)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ground"]
+size = Vector3(44, 0.2, 44)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
+size = Vector3(44, 0.2, 44)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_proj"]
+radius = 2.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gate"]
+radius = 3.0
+
+[ext_resource type="Script" path="res://scenes/world/zones/zone_07_crossroads/zone_07.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/world/zones/zone_07_crossroads/nihilist.gd" id="2"]
+
+[node name="Zone07Crossroads" type="Node3D"]
+script = ExtResource("1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+light_color = Color(0.82, 0.82, 0.86, 1)
+light_energy = 0.75
+shadow_enabled = true
+
+[node name="EntryTrigger" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntryTrigger"]
+shape = SubResource("BoxShape3D_entry")
+
+[node name="PhilosopherSpawns" type="Node3D" parent="."]
+
+[node name="NihilistSpawn" type="Marker3D" parent="PhilosopherSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="TheNihilist" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("2")
+
+[node name="ThresholdGate" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ThresholdGate"]
+shape = SubResource("SphereShape3D_gate")
+
+[node name="ProjectionTrigger" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ProjectionTrigger"]
+shape = SubResource("SphereShape3D_proj")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("BoxMesh_ground")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("BoxShape3D_ground")

@@ -1,0 +1,105 @@
+{
+  "events": [
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "text": "[He is sitting. Has been sitting so long that the ground seems shaped to him. He doesn't acknowledge you for a long moment.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Buddhist",
+      "text": "Sit."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "[Sit down]", "condition": "", "destination": "choice_sit"},
+        {"text": "I'm not here to meditate.", "condition": "", "destination": "choice_refuse"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_refuse",
+      "character": "The Buddhist",
+      "text": "Then come back when you are."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "text": "[He goes quiet. Completely quiet. The silence is not uncomfortable. That's what's uncomfortable.]"
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "end_refuse"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_sit",
+      "character": "",
+      "text": "[You sit. The quiet expands around you both.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Buddhist",
+      "text": "You are attached to the idea that suffering should not exist."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Buddhist",
+      "text": "That attachment is suffering."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "That's circular.", "condition": "", "destination": "sit_circular"},
+        {"text": "You're saying I should just accept it.", "condition": "", "destination": "sit_accept"},
+        {"text": "[Say nothing]", "condition": "", "destination": "sit_silence"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "sit_circular",
+      "character": "The Buddhist",
+      "text": "Yes. That's the point."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Buddhist",
+      "text": "The circle is the problem. You have been running its edge your entire life."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "sit_accept",
+      "character": "The Buddhist",
+      "text": "I am saying you should observe it. Without needing it to be different."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Buddhist",
+      "text": "You cannot solve pain by hating it more efficiently."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "sit_silence",
+      "character": "",
+      "text": "[You say nothing. He says nothing. Time passes. Something in your chest loosens — slightly, against your will.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Buddhist",
+      "text": "There."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    }
+  ]
+}

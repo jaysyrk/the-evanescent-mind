@@ -70,6 +70,19 @@ func load_game() -> bool:
 	return true
 
 
+func save_exists() -> bool:
+	return FileAccess.file_exists(SAVE_PATH)
+
+
+func reset() -> void:
+	delete_save()
+	GameState.flags.clear()
+	MentalStateManager.mood    = -0.3
+	MentalStateManager.anxiety =  0.4
+	MentalStateManager.focus   =  0.3
+	LimerenceTracker.limerence_level = 0.0
+
+
 func delete_save() -> void:
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(SAVE_PATH)

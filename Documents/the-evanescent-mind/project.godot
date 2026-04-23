@@ -13,7 +13,7 @@ config_version=5
 config/name="Evanescence"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
-run/main_scene="res://scenes/world/main.tscn"
+run/main_scene="res://scenes/ui/main_menu.tscn"
 
 [autoload]
 
@@ -25,6 +25,7 @@ NarrativeManager="*res://autoloads/NarrativeManager.gd"
 DynamicAudioManager="*res://autoloads/DynamicAudioManager.gd"
 EndingSystem="*res://autoloads/EndingSystem.gd"
 SaveSystem="*res://scripts/systems/SaveSystem.gd"
+ProjectionSequenceManager="*res://autoloads/ProjectionSequenceManager.gd"
 PhantomCameraManager="*uid://duq6jhf6unyis"
 Dialogic="*uid://ds2q0uclmolvu"
 

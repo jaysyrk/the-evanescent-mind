@@ -13,13 +13,13 @@ const ANXIETY_HIGH_THRESHOLD    :=  0.65
 const FOCUS_HYPERFOCUS_THRESHOLD:=  0.8
 const FOCUS_SCATTER_THRESHOLD   :=  0.25
 
-# Drift targets — mutable so ritual pieces can permanently shift them
-var MOOD_DRIFT_TARGET: float  = -0.25   # Slight depressive pull (the condition)
-const MOOD_DRIFT_RATE    :=  0.008
-const ANXIETY_DRIFT_TARGET := 0.35
-const ANXIETY_DRIFT_RATE   := 0.015
-const FOCUS_DRIFT_TARGET   := 0.3
-const FOCUS_DRIFT_RATE     := 0.012
+# Drift targets — all mutable so philosopher pieces can permanently shift them
+var MOOD_DRIFT_TARGET: float    = -0.25   # Slight depressive pull (the condition)
+var MOOD_DRIFT_RATE: float      =  0.008
+var ANXIETY_DRIFT_TARGET: float =  0.35
+const ANXIETY_DRIFT_RATE        =  0.015
+var FOCUS_DRIFT_TARGET: float   =  0.3
+const FOCUS_DRIFT_RATE          =  0.012
 
 
 # ── State axes ────────────────────────────────────────────────────────────────
@@ -105,6 +105,12 @@ func apply_event(event_id: String) -> void:
 			anxiety += 0.10
 		"perfect_dodge":
 			focus   += 0.25
+		"projection_sequence_viewed":
+			mood    += 0.12
+			anxiety += 0.05
+		"puzzle_solved":
+			focus   += 0.15
+			mood    += 0.08
 
 
 # ── Internal ──────────────────────────────────────────────────────────────────

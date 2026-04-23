@@ -4,9 +4,11 @@ extends Node
 ## Drives intrusive thoughts, projection sequences, and the ending weight.
 
 
-const PROJECTION_UNLOCK_THRESHOLD := 0.55
+var PROJECTION_UNLOCK_THRESHOLD: float = 0.55   # mutable — Theist piece lowers it
 const INTRUSIVE_THOUGHT_INTERVAL_MIN := 30.0   # seconds
 const INTRUSIVE_THOUGHT_INTERVAL_MAX := 120.0
+
+var base_limerence_drift: float = 0.0    # passive limerence gain per second (modified by Hedonist piece)
 
 var limerence_level: float = 0.0:
 	set(value):

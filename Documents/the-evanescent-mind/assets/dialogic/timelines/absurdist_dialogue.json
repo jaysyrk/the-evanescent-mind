@@ -1,0 +1,133 @@
+{
+  "events": [
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "text": "[He's sitting on the floor in the middle of the labyrinth like it makes complete sense. He waves.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Absurdist",
+      "text": "You made it! Excellent. Most people get turned around at the third corridor."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Absurdist",
+      "text": "I hear you want to end all existence to stop suffering."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "Yes.", "condition": "", "destination": "choice_yes"},
+        {"text": "It's more complicated than that.", "condition": "", "destination": "choice_complicated"},
+        {"text": "Why is that funny?", "condition": "", "destination": "choice_why_laugh"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_yes",
+      "character": "The Absurdist",
+      "text": "Magnificent. Genuinely. I've heard a lot of responses to the absurd and that is easily the most dramatic."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Absurdist",
+      "text": "I respect the commitment. Sisyphus would find it excessive. I find it endearing."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "This isn't endearing. This is grief.", "condition": "", "destination": "yes_grief"},
+        {"text": "You're not taking this seriously.", "condition": "", "destination": "yes_not_serious"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "yes_grief",
+      "character": "The Absurdist",
+      "text": "..."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Absurdist",
+      "text": "You're right. I'm sorry."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Absurdist",
+      "text": "I laugh because the universe is silent and it's either laugh or scream. I chose laugh. You're choosing something else. Both are valid."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_2"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "yes_not_serious",
+      "character": "The Absurdist",
+      "text": "I'm taking it very seriously. I'm just not pretending that seriousness is the same as meaning."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_complicated",
+      "character": "The Absurdist",
+      "text": "It always is! That's the best part!"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Absurdist",
+      "text": "The universe gives you exactly zero framework and you have to build the whole thing out of wet cardboard and hope. It's hilarious."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "What if I'm out of hope?", "condition": "", "destination": "complicated_hopeless"},
+        {"text": "You're describing hell.", "condition": "", "destination": "complicated_hell"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "complicated_hopeless",
+      "character": "The Absurdist",
+      "text": "Revolt doesn't need hope. It just needs you to keep moving anyway. You're here. That's revolt."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "complicated_hell",
+      "character": "The Absurdist",
+      "text": "Kind of! And heaven. And a Tuesday. They're all the same material."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Absurdist",
+      "text": "The trick is to keep playing even when you know the game has no winners."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_why_laugh",
+      "character": "The Absurdist",
+      "text": "Because it's the most human possible response to an inhuman situation."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Absurdist",
+      "text": "You're in so much pain that you want to erase all of existence. That's not laughable. That's enormous. I laugh so I don't forget how enormous it is."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_2"
+    }
+  ]
+}

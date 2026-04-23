@@ -1,0 +1,151 @@
+{
+  "events": [
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "text": "[She's surrounded by small grey stones, each one the size of a fist. She looks at them more than at you. There is ash in her hair.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Antinatalist",
+      "text": "You came here to agree with me."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "Maybe.", "condition": "", "destination": "choice_maybe"},
+        {"text": "We're saying the same thing.", "condition": "", "destination": "choice_same"},
+        {"text": "I'm not sure.", "condition": "", "destination": "choice_unsure"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_same",
+      "character": "The Antinatalist",
+      "text": "Are we?"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Antinatalist",
+      "text": "I argue against beginning. You want to end what is. Those are very different crimes."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "Both result in no more suffering.", "condition": "", "destination": "same_result"},
+        {"text": "What I want is mercy. Not punishment.", "condition": "", "destination": "same_mercy"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "same_result",
+      "character": "The Antinatalist",
+      "text": "One asks permission. One doesn't."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_half"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "same_mercy",
+      "character": "The Antinatalist",
+      "text": "Mercy for people who didn't ask for it is still a decision made without them."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_maybe",
+      "character": "The Antinatalist",
+      "text": "I lost someone."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "text": "[She picks up one of the stones. Sets it down elsewhere.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Antinatalist",
+      "text": "My daughter. She was in the world for eleven days. I've spent fifteen years asking if I made the right choice."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "I'm sorry.", "condition": "", "destination": "maybe_sorry"},
+        {"text": "That's why you believe this.", "condition": "", "destination": "maybe_why"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "maybe_sorry",
+      "character": "The Antinatalist",
+      "text": "I don't need that. I need you to understand that this isn't abstraction."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "maybe_why",
+      "character": "The Antinatalist",
+      "text": "It's why I know it, yes. The philosophy came after the grief. They're not the same thing."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Antinatalist",
+      "text": "Don't let your grief become your argument. It'll make the argument weaker and the grief worse."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_unsure",
+      "character": "The Antinatalist",
+      "text": "Good. Certainty in this territory is either wisdom or a symptom. The unsure ones are easier to talk to."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Antinatalist",
+      "text": "What stops you from being sure?"
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {"text": "Someone I don't want to not exist.", "condition": "", "destination": "unsure_celeste"},
+        {"text": "I'm not sure it's my decision to make.", "condition": "", "destination": "unsure_consent"}
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "unsure_celeste",
+      "character": "The Antinatalist",
+      "text": "Ah."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Antinatalist",
+      "text": "There it is."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "unsure_consent",
+      "character": "The Antinatalist",
+      "text": "That's the question, isn't it. Who gets to decide what mercy looks like."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_half"
+    }
+  ]
+}
