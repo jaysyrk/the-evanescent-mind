@@ -43,7 +43,7 @@ func load_game() -> bool:
 	var json_string := file.get_as_text()
 	file.close()
 
-	var parsed := JSON.parse_string(json_string)
+	var parsed: Variant = JSON.parse_string(json_string)
 	if parsed == null:
 		push_error("SaveSystem: save file is corrupt or invalid JSON.")
 		return false
