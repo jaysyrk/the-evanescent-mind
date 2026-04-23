@@ -52,6 +52,7 @@ var input_enabled: bool = true
 func _ready() -> void:
 	add_to_group("player")
 	_hitbox.monitoring = false
+	_hitbox.area_entered.connect(_on_weapon_hit)
 	_hurtbox.area_entered.connect(_on_hurtbox_entered)
 	EventBus.mental_state_changed.connect(_on_mental_state_changed)
 	EventBus.dialogue_started.connect(_on_dialogue_started)
@@ -158,7 +159,9 @@ func _try_attack() -> void:
 	_set_state(State.ATTACK)
 
 	var anim_speed: float = 1.0 + MentalStateManager.mood * 0.35
-	await _play_anim_and_wait("attack_01", 0.5, anim_speed)
+	# Enable hitbox mid-swing (after wind-up), disable at recovery
+	_hitbox.monitoring = true
+	await _play_anim_and_wait("attack_01", 0.25, anim_speed)
 	_hitbox.monitoring = false
 	_recovery_timer = RECOVERY_DURATION
 	_set_state(State.RECOVERY)
@@ -230,6 +233,16 @@ func _die() -> void:
 
 
 # ── Hitbox ────────────────────────────────────────────────────────────────────
+func _on_weapon_hit(area: Area3D) -> void:
+	## Player weapon hit an enemy hurtbox.
+	if area.is_in_group("hurtbox"):
+		var base_damage := 12.0
+		# Manic: deal 20% more damage; focus: slightly faster
+		var damage_mod := 1.0 + MentalStateManager.mood * 0.20
+		var knockback := 5.5
+		area.receive_hit(base_damage * damage_mod, knockback, global_position)
+
+
 func _on_hurtbox_entered(area: Area3D) -> void:
 	if area.is_in_group("enemy_hitbox"):
 		var dmg: float = area.get_meta("damage", 10.0)
