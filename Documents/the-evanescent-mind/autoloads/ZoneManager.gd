@@ -128,14 +128,7 @@ func _fade_to(target_alpha: float, duration: float) -> void:
 	await tween.finished
 
 
-func _load_persistent_ui() -> void:
-	## Instantiate game UI as children of ZoneManager so they survive all
-	## change_scene_to_file calls.  Only do this when NOT in the main menu.
-	## They'll be added to the tree on first zone load instead.
-	pass  # deferred to first load_zone() call
-
-
-func _load_persistent_ui() -> void:
+func _load_persistent_ui_placeholder() -> void:
 	## Instantiate game UI as children of ZoneManager so they survive all
 	## change_scene_to_file calls.  Only do this when NOT in the main menu.
 	## They'll be added to the tree on first zone load instead.
@@ -162,7 +155,6 @@ func _on_player_died() -> void:
 		return
 	MentalStateManager.apply_event("player_died")
 	# Brief pause, then reload the current zone (last mental state persists)
-	await get_tree().create_timer(2.0).timeout
-	NarrativeManager.trigger_custom("You come back. You always come back.")
-	await get_tree().create_timer(1.5).timeout
+	# NarrativeManager will fire the player_died beat automatically.
+	await get_tree().create_timer(3.5).timeout
 	load_zone(current_zone_index)
