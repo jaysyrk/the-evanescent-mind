@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://zone_03_still_void"]
+[gd_scene load_steps=6 format=3 uid="uid://zone_03_still_void"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_entry"]
 size = Vector3(28, 4, 28)
@@ -19,6 +19,11 @@ radius = 3.2
 [ext_resource type="Script" path="res://scenes/world/zones/zone_03_still_void/buddhist.gd" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/the_absence/absence.tscn" id="3"]
 [ext_resource type="PackedScene" path="res://scenes/puzzles/puzzle_stillness.tscn" id="4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_exit_2"]
+size = Vector3(6.0, 3.0, 1.0)
+
+[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_2"]
 
 [node name="Zone03StillVoid" type="Node3D"]
 script = ExtResource("1")
@@ -94,3 +99,25 @@ mesh = SubResource("BoxMesh_ground")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_ground")
+
+[node name="PlayerSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8)
+
+[node name="ZoneExit" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -14)
+script = ExtResource("portal_script_2")
+require_piece_flag = "piece_buddhist"
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneExit"]
+shape = SubResource("BoxShape3D_exit_2")
+
+[node name="HintLabel" type="Label3D" parent="ZoneExit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 0)
+text = "[ continue ]"
+pixel_size = 0.006
+billboard = 3
+visible = false

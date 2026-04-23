@@ -16,16 +16,13 @@ func _ready() -> void:
 
 func _on_new_game_pressed() -> void:
 	SaveSystem.reset()
-	get_tree().change_scene_to_file(
-		"res://scenes/world/zones/zone_01_waking_sorrow/zone_01.tscn"
-	)
+	ZoneManager.load_zone(0)
 
 
 func _on_continue_pressed() -> void:
 	if SaveSystem.load_game():
-		get_tree().change_scene_to_file(
-			"res://scenes/world/zones/zone_01_waking_sorrow/zone_01.tscn"
-		)
+		var saved_zone: int = GameState.get_flag("current_zone_index") if GameState.get_flag("current_zone_index") != null else 0
+		ZoneManager.load_zone(saved_zone)
 
 
 func _on_exit_pressed() -> void:

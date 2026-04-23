@@ -42,6 +42,9 @@ var flags: Dictionary = {
 	# Ending
 	"ending": "",           # "void" | "stay"
 	"game_complete": false,
+
+	# Save metadata
+	"current_zone_index": 0,
 }
 
 const _RITUAL_PIECES: Array[String] = [
@@ -69,6 +72,17 @@ func get_flag(flag_name: String) -> Variant:
 
 func all_pieces_collected() -> bool:
 	return _RITUAL_PIECES.all(func(p: String) -> bool: return flags.get(p, false))
+
+
+## Journal — ordered list of entry IDs the player has collected.
+var journal_entries: Array[String] = []
+
+
+func add_journal_entry(entry_id: String) -> void:
+	if entry_id in journal_entries:
+		return
+	journal_entries.append(entry_id)
+	EventBus.journal_entry_added.emit(entry_id)
 
 
 # ── Internal ──────────────────────────────────────────────────────────────────

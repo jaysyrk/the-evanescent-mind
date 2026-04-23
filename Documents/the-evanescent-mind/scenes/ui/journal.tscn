@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://journal_overlay"]
+
+[ext_resource type="Script" path="res://scenes/ui/journal.gd" id="1"]
+
+[node name="Journal" type="Control"]
+script = ExtResource("1")
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+z_index = 12
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.15
+anchor_right = 0.85
+anchor_top = 0.08
+anchor_bottom = 0.92
+offset_left = 0.0
+offset_right = 0.0
+offset_top = 0.0
+offset_bottom = 0.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_right = 0.0
+offset_top = 0.0
+offset_bottom = 0.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="Panel/MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="TitleLabel" type="Label" parent="Panel/MarginContainer/VBox"]
+text = "Fragments"
+theme_override_font_sizes/font_size = 22
+
+[node name="Separator" type="HSeparator" parent="Panel/MarginContainer/VBox"]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel/MarginContainer/VBox"]
+size_flags_vertical = 3
+
+[node name="RichText" type="RichTextLabel" parent="Panel/MarginContainer/VBox/ScrollContainer"]
+bbcode_enabled = true
+fit_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "[i]Nothing yet.[/i]"
+theme_override_font_sizes/normal_font_size = 14
+
+[node name="CloseHint" type="Label" parent="Panel/MarginContainer/VBox"]
+text = "[ J ] close"
+horizontal_alignment = 2
+theme_override_font_sizes/font_size = 11

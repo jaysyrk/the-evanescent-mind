@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://zone_05_laughing_labyrinth"]
+[gd_scene load_steps=6 format=3 uid="uid://zone_05_laughing_labyrinth"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_entry"]
 size = Vector3(28, 4, 28)
@@ -18,6 +18,11 @@ radius = 3.2
 [ext_resource type="Script" path="res://scenes/world/zones/zone_05_laughing_labyrinth/zone_05.gd" id="1"]
 [ext_resource type="Script" path="res://scenes/world/zones/zone_05_laughing_labyrinth/absurdist.gd" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/enemies/the_jester/jester.tscn" id="3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_exit_4"]
+size = Vector3(6.0, 3.0, 1.0)
+
+[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_4"]
 
 [node name="Zone05LaughingLabyrinth" type="Node3D"]
 script = ExtResource("1")
@@ -92,3 +97,25 @@ mesh = SubResource("BoxMesh_ground")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
 shape = SubResource("BoxShape3D_ground")
+
+[node name="PlayerSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 8)
+
+[node name="ZoneExit" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -14)
+script = ExtResource("portal_script_4")
+require_piece_flag = "piece_absurdist"
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ZoneExit"]
+shape = SubResource("BoxShape3D_exit_4")
+
+[node name="HintLabel" type="Label3D" parent="ZoneExit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 0)
+text = "[ continue ]"
+pixel_size = 0.006
+billboard = 3
+visible = false

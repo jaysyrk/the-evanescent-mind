@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var run_speed       := 7.5
 @export var jump_velocity   := 6.0
 @export var gravity         := 20.0
+@export var mouse_sensitivity := 0.002
 
 # Combat
 @export var max_stamina     := 100.0
@@ -44,17 +45,39 @@ const RECOVERY_DURATION := 0.35
 
 var _hp: float = 100.0
 
+## Set to false during dialogue / cutscenes to block movement + combat input.
+var input_enabled: bool = true
+
 
 func _ready() -> void:
 	add_to_group("player")
 	_hitbox.monitoring = false
 	_hurtbox.area_entered.connect(_on_hurtbox_entered)
 	EventBus.mental_state_changed.connect(_on_mental_state_changed)
+	EventBus.dialogue_started.connect(_on_dialogue_started)
+	EventBus.dialogue_ended.connect(_on_dialogue_ended)
+	# Capture mouse for 3-D look
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and input_enabled:
+		# Rotate player body horizontally
+		rotate_y(-event.relative.x * mouse_sensitivity)
+		# Tilt camera pivot vertically, clamped to avoid neck-break
+		_camera_pivot.rotate_x(-event.relative.y * mouse_sensitivity)
+		_camera_pivot.rotation.x = clampf(_camera_pivot.rotation.x, -1.2, 0.4)
 
 
 # ── Main loop ─────────────────────────────────────────────────────────────────
 func _physics_process(delta: float) -> void:
 	_apply_gravity(delta)
+
+	if not input_enabled and _state not in [State.HIT, State.DEAD]:
+		velocity.x = move_toward(velocity.x, 0.0, walk_speed * delta * 10.0)
+		velocity.z = move_toward(velocity.z, 0.0, walk_speed * delta * 10.0)
+		move_and_slide()
+		return
 
 	match _state:
 		State.IDLE, State.MOVE:
@@ -134,13 +157,8 @@ func _try_attack() -> void:
 	_stamina -= attack_stamina_cost
 	_set_state(State.ATTACK)
 
-	# Manic: faster animation; Depressive: slower
 	var anim_speed: float = 1.0 + MentalStateManager.mood * 0.35
-	_anim.speed_scale = anim_speed
-	_anim.play("attack_01")
-	_hitbox.monitoring = true
-
-	await _anim.animation_finished
+	await _play_anim_and_wait("attack_01", 0.5, anim_speed)
 	_hitbox.monitoring = false
 	_recovery_timer = RECOVERY_DURATION
 	_set_state(State.RECOVERY)
@@ -160,7 +178,7 @@ func _try_dodge() -> void:
 	_dodge_timer = dodge_duration
 	_is_invulnerable = true
 	_set_state(State.DODGE)
-	_anim.play("dodge")
+	_play_anim("dodge")
 
 
 func _end_dodge() -> void:
@@ -198,7 +216,7 @@ func take_damage(amount: float, source: Node = null) -> void:
 	_set_state(State.HIT)
 	_is_invulnerable = true
 	var stagger_duration := 0.5 + absf(minf(MentalStateManager.mood, 0.0)) * 0.4
-	_anim.play("hit")
+	_play_anim("hit")
 
 	await get_tree().create_timer(i_frame_duration).timeout
 	_is_invulnerable = false
@@ -207,7 +225,7 @@ func take_damage(amount: float, source: Node = null) -> void:
 
 func _die() -> void:
 	_set_state(State.DEAD)
-	_anim.play("death")
+	_play_anim("death")
 	EventBus.player_died.emit()
 
 
@@ -243,3 +261,37 @@ func _on_mental_state_changed(axis: String, _value: float) -> void:
 # ── State helpers ─────────────────────────────────────────────────────────────
 func _set_state(new_state: State) -> void:
 	_state = new_state
+
+
+# ── Animation helpers ──────────────────────────────────────────────────────────
+## Play an animation if it exists; silently skip otherwise.
+func _play_anim(anim_name: String, speed: float = 1.0) -> void:
+	if _anim == null:
+		return
+	if not _anim.has_animation(anim_name):
+		return
+	_anim.speed_scale = speed
+	_anim.play(anim_name)
+
+
+## Play an animation and wait for it to finish.
+## Falls back to a timer if the animation does not exist.
+func _play_anim_and_wait(anim_name: String, fallback_sec: float = 0.4, speed: float = 1.0) -> void:
+	if _anim != null and _anim.has_animation(anim_name):
+		_anim.speed_scale = speed
+		_anim.play(anim_name)
+		await _anim.animation_finished
+	else:
+		await get_tree().create_timer(fallback_sec).timeout
+
+
+# ── Dialogue / input lock ──────────────────────────────────────────────────────
+func _on_dialogue_started() -> void:
+	input_enabled = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
+
+func _on_dialogue_ended() -> void:
+	input_enabled = true
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+

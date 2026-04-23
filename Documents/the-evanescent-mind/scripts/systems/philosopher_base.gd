@@ -93,6 +93,7 @@ func _on_piece_ready() -> void:
 func _give_piece() -> void:
 	piece_collected = true
 	GameState.set_flag(piece_id, true)
+	GameState.add_journal_entry(piece_id)
 	EventBus.ritual_piece_collected.emit(piece_id)
 	MentalStateManager.apply_event("ritual_piece_collected")
 	NarrativeManager.trigger_beat("ritual_piece_collected")
