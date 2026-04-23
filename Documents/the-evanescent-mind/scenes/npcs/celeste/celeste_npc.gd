@@ -89,6 +89,8 @@ func _update_visibility() -> void:
 		_light.light_energy = 1.4
 
 	# Tween mesh alpha via surface override (material transparency)
+	if _mesh == null:
+		return
 	var mat := _mesh.get_active_material(0)
 	if mat and mat is StandardMaterial3D:
 		var tween := create_tween()
@@ -123,11 +125,16 @@ func _input(event: InputEvent) -> void:
 
 # ── Behaviour ─────────────────────────────────────────────────────────────────
 func _drift_away() -> void:
-	var dir := (global_position - get_tree().get_first_node_in_group("player").global_position).normalized()
+	var player := get_tree().get_first_node_in_group("player")
+	if player == null:
+		return
+	var dir := (global_position - player.global_position).normalized()
 	var tween := create_tween()
 	tween.tween_property(self, "global_position",
 		global_position + dir * 3.0, 2.5).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(_mesh.get_active_material(0), "albedo_color:a", 0.0, 1.0)
+	var mat := _mesh.get_active_material(0) if _mesh != null else null
+	if mat != null:
+		tween.tween_property(mat, "albedo_color:a", 0.0, 1.0)
 	await tween.finished
 	celeste_faded.emit()
 

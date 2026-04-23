@@ -8,7 +8,9 @@ extends "res://scripts/systems/puzzle_base.gd"
 
 const CORRECT_ORDER := [3, 1, 5, 2, 4]
 
-@onready var orbs: Node3D = $MemoryOrbs   # Contains child Area3D nodes named Orb1–Orb5
+## The MemoryOrbs node lives in the zone scene, not inside this puzzle.
+## This export is assigned in the zone inspector OR falls back to a sibling search.
+@export var memory_orbs_node: Node3D
 
 var _touch_sequence: Array[int] = []
 var _orb_refs: Array[Area3D] = []
@@ -16,6 +18,13 @@ var _orb_refs: Array[Area3D] = []
 
 func _setup() -> void:
 	puzzle_id = "puzzle_projection_calibration"
+	# Resolve MemoryOrbs: use export if set, else search in parent
+	var orbs: Node3D = memory_orbs_node
+	if orbs == null:
+		orbs = get_parent().get_node_or_null("MemoryOrbs")
+	if orbs == null:
+		push_error("PuzzleProjectionCalibration: MemoryOrbs node not found")
+		return
 	for i in range(1, 6):
 		var orb: Area3D = orbs.get_node_or_null("Orb%d" % i)
 		if orb:

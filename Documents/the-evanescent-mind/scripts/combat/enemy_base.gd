@@ -38,7 +38,7 @@ func _ready() -> void:
 	_hp = max_hp
 	_find_player()
 	_set_state(State.PATROL)
-	hurtbox.damage_received.connect(_on_damage_received)
+	# take_damage() is called directly from hurtbox.receive_hit() — no signal needed here
 
 
 func _physics_process(delta: float) -> void:
@@ -107,7 +107,8 @@ func take_damage(amount: float, knockback_force: float, source_pos: Vector3) -> 
 		_die()
 	else:
 		_set_state(State.STAGGERED)
-		anim.play("hit")
+		if anim != null and anim.has_animation("hit"):
+			anim.play("hit")
 
 
 # ── Internal helpers ──────────────────────────────────────────────────────────
@@ -115,10 +116,10 @@ func _die() -> void:
 	is_dead = true
 	hitbox.disable_hit()
 	_set_state(State.DEAD)
-	anim.play("death")
 	EventBus.enemy_died.emit(self)
-	# Remove after death animation; subclasses can override
-	await anim.animation_finished
+	if anim != null and anim.has_animation("death"):
+		anim.play("death")
+		await anim.animation_finished
 	queue_free()
 
 

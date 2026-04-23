@@ -42,12 +42,64 @@ const _MONOLOGUE_BEATS: Dictionary = {
 		"anxious":    "She knows. She has to know. How much does she know?",
 		"manic":      "She's here. She's actually here. You didn't ruin it.",
 	},
+	# ── Zone entry beats ────────────────────────────────────────────────────
+	"enter_zone_01": {
+		"default":    "The familiar weight. You've been here before, in every room.",
+		"depressive": "Everything is grey here. Everything is always grey.",
+		"manic":      "You can move through this. You can move through anything.",
+		"anxious":    "Something in this place is watching. Something is always watching.",
+	},
+	"enter_zone_02": {
+		"default":    "The lights are beautiful. You remember when that was enough.",
+		"manic":      "Yes. This. This is what it feels like to be alive.",
+		"depressive": "Even the beauty feels like a threat. It will go. It always goes.",
+		"scattered":  "Bright. Too bright. You want to touch everything and none of it.",
+	},
+	"enter_zone_03": {
+		"default":    "Nothing here. Just the ringing in your ears.",
+		"depressive": "The void is comfortable. Familiar. That should bother you.",
+		"anxious":    "Too quiet. The quiet means something is about to happen.",
+		"hyperfocus": "In the stillness you can hear it. Whatever it is. It's underneath everything.",
+	},
+	"enter_zone_04": {
+		"default":    "Ash. The residue of everything that stopped.",
+		"depressive": "This is where everything ends up. You've always known that.",
+		"anxious":    "Were you supposed to stop something? Could you have?",
+		"manic":      "Out of the ash, then. Again. Always again.",
+	},
+	"enter_zone_05": {
+		"default":    "Laughter. Somewhere. It doesn't include you.",
+		"anxious":    "Are they laughing at something? Are they laughing at you?",
+		"manic":      "The joke is that none of this matters. The joke is very funny right now.",
+		"depressive": "You forgot what laughing feels like. Genuinely forgot.",
+	},
+	"enter_zone_06": {
+		"default":    "This place remembers things. Not accurately.",
+		"manic":      "Her face, everywhere. You put it here. You've been putting it everywhere.",
+		"depressive": "You built an entire world in someone else's image. Now you have to look at it.",
+		"anxious":    "What if she could see this? What you've done with her, in your head?",
+	},
+	"enter_zone_07": {
+		"default":    "The crossroads. Every path you took, every one you didn't.",
+		"depressive": "All those choices. Here, at the end, they look like nothing.",
+		"manic":      "This is it. This is the moment it all converges.",
+		"anxious":    "You have to choose. You've always been bad at choosing.",
+		"hyperfocus": "You see all of it. The whole map. You're standing at the centre.",
+	},
+	"player_died": {
+		"default":    "You come back. You always come back.",
+		"depressive": "Again. What's the point of that?",
+		"manic":      "Not yet. Apparently not yet.",
+		"anxious":    "What happened? What did you miss? What went wrong?",
+	},
 }
 
 
 func _ready() -> void:
 	EventBus.flag_set.connect(_on_flag_set)
 	EventBus.lo_interaction.connect(_on_lo_interaction)
+	EventBus.zone_entered.connect(_on_zone_entered)
+	EventBus.player_died.connect(_on_player_died)
 
 
 # ── Public API ────────────────────────────────────────────────────────────────
@@ -88,3 +140,25 @@ func _on_flag_set(flag_name: String, value: Variant) -> void:
 func _on_lo_interaction(interaction_type: String) -> void:
 	if interaction_type == "dialogue":
 		MentalStateManager.apply_event("met_celeste")
+
+
+func _on_zone_entered(zone_id: String) -> void:
+	# Map zone_id to beat — only fires on first entry (monologue_overlay handles dedup)
+	var beat_map := {
+		"zone_01_waking_sorrow":    "enter_zone_01",
+		"zone_02_manic_garden":     "enter_zone_02",
+		"zone_03_still_void":       "enter_zone_03",
+		"zone_04_cradle_of_ash":    "enter_zone_04",
+		"zone_05_laughing_labyrinth": "enter_zone_05",
+		"zone_06_limerent_archive": "enter_zone_06",
+		"zone_07_crossroads":       "enter_zone_07",
+	}
+	var beat: String = beat_map.get(zone_id, "")
+	if beat != "":
+		await get_tree().create_timer(1.5).timeout
+		trigger_beat(beat)
+
+
+func _on_player_died() -> void:
+	await get_tree().create_timer(0.8).timeout
+	trigger_beat("player_died")
