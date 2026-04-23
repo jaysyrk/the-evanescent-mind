@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://main_scene"]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/hud.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/systems/WorldVisualManager.gd" id="2"]
+
+[node name="Main" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="WorldVisualManager" type="Node" parent="."]
+script = ExtResource("2")
+
+[node name="HUD" parent="." instance=ExtResource("1")]
