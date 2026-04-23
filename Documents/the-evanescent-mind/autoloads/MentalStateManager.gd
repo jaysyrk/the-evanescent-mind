@@ -103,6 +103,9 @@ func apply_event(event_id: String) -> void:
 			focus   += 0.10
 		"player_damaged":
 			anxiety += 0.10
+		"player_died":
+			mood    -= 0.12
+			anxiety += 0.18
 		"perfect_dodge":
 			focus   += 0.25
 		"projection_sequence_viewed":

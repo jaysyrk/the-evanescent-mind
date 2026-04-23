@@ -12,6 +12,7 @@ func save_game() -> void:
 		"version":         SAVE_VERSION,
 		"timestamp":       Time.get_datetime_string_from_system(),
 		"flags":           GameState.flags.duplicate(true),
+		"journal_entries": GameState.journal_entries.duplicate(),
 		"mental_state": {
 			"mood":    MentalStateManager.mood,
 			"anxiety": MentalStateManager.anxiety,
@@ -59,6 +60,12 @@ func load_game() -> bool:
 		if saved_flags.has(key):
 			GameState.flags[key] = saved_flags[key]
 
+	# Restore journal entries
+	var saved_journal: Array = data.get("journal_entries", [])
+	GameState.journal_entries.clear()
+	for entry_id: String in saved_journal:
+		GameState.journal_entries.append(entry_id)
+
 	# Restore mental state (direct assignment bypasses setters' threshold signals on load)
 	var ms: Dictionary = data.get("mental_state", {})
 	if ms.has("mood"):    MentalStateManager.mood    = float(ms["mood"])
@@ -76,7 +83,15 @@ func save_exists() -> bool:
 
 func reset() -> void:
 	delete_save()
-	GameState.flags.clear()
+	# Re-initialize flags to their schema defaults (don't call clear — that removes the keys)
+	for key in GameState.flags.keys():
+		var default_val = GameState.flags[key]
+		match typeof(default_val):
+			TYPE_BOOL:   GameState.flags[key] = false
+			TYPE_INT:    GameState.flags[key] = 0
+			TYPE_FLOAT:  GameState.flags[key] = 0.0
+			TYPE_STRING: GameState.flags[key] = ""
+	GameState.journal_entries.clear()
 	MentalStateManager.mood    = -0.3
 	MentalStateManager.anxiety =  0.4
 	MentalStateManager.focus   =  0.3

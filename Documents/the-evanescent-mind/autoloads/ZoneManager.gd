@@ -40,7 +40,7 @@ var _canvas: CanvasLayer
 
 func _ready() -> void:
 	_build_fade_overlay()
-	_load_persistent_ui()
+	EventBus.player_died.connect(_on_player_died)
 
 
 func _build_fade_overlay() -> void:
@@ -135,6 +135,13 @@ func _load_persistent_ui() -> void:
 	pass  # deferred to first load_zone() call
 
 
+func _load_persistent_ui() -> void:
+	## Instantiate game UI as children of ZoneManager so they survive all
+	## change_scene_to_file calls.  Only do this when NOT in the main menu.
+	## They'll be added to the tree on first zone load instead.
+	pass  # deferred to first load_zone() call
+
+
 var _ui_loaded: bool = false
 
 func _ensure_persistent_ui() -> void:
@@ -148,3 +155,14 @@ func _ensure_persistent_ui() -> void:
 			continue
 		var node := res.instantiate()
 		add_child(node)
+
+
+func _on_player_died() -> void:
+	if _is_transitioning:
+		return
+	MentalStateManager.apply_event("player_died")
+	# Brief pause, then reload the current zone (last mental state persists)
+	await get_tree().create_timer(2.0).timeout
+	NarrativeManager.trigger_custom("You come back. You always come back.")
+	await get_tree().create_timer(1.5).timeout
+	load_zone(current_zone_index)

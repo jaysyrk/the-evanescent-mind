@@ -79,3 +79,6 @@ text = "Begin the Ritual"
 
 [node name="LookAtHerBtn" type="Button" parent="ThresholdChoiceUI/VBox"]
 text = "Look at her"
+
+[node name="PlayerSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 10)
