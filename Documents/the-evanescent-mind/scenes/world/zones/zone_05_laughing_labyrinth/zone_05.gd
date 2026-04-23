@@ -16,7 +16,7 @@ func _ready() -> void:
 	zone_id              = "zone_05_laughing_labyrinth"
 	zone_display_name    = "The Laughing Labyrinth"
 	mental_state_event   = "zone_enter_labyrinth"
-	entry_monologue_beat = "game_start"
+	entry_monologue_beat = "enter_zone_05"
 	super()
 	_spawn_jesters()
 	projection_trigger.body_entered.connect(_on_projection_trigger)

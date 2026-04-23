@@ -16,7 +16,7 @@ func _ready() -> void:
 	zone_id              = "zone_06_limerent_archive"
 	zone_display_name    = "The Limerent Archive"
 	mental_state_event   = "zone_enter_limerent_archive"
-	entry_monologue_beat = "game_start"
+	entry_monologue_beat = "enter_zone_06"
 	super()
 	_spawn_shades()
 	projection_trigger.body_entered.connect(_on_projection_trigger)

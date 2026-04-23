@@ -26,7 +26,7 @@ func _ready() -> void:
 	zone_id              = ZONE_ID
 	zone_display_name    = "The Waking Sorrow"
 	mental_state_event   = "zone_enter_waking_sorrow"
-	entry_monologue_beat = "game_start"
+	entry_monologue_beat = "enter_zone_01"
 	super()
 	_spawn_hollows()
 	ritual_piece_trigger.body_entered.connect(_on_ritual_area_entered)

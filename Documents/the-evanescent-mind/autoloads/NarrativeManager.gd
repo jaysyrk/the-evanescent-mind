@@ -98,7 +98,6 @@ const _MONOLOGUE_BEATS: Dictionary = {
 func _ready() -> void:
 	EventBus.flag_set.connect(_on_flag_set)
 	EventBus.lo_interaction.connect(_on_lo_interaction)
-	EventBus.zone_entered.connect(_on_zone_entered)
 	EventBus.player_died.connect(_on_player_died)
 
 
@@ -140,23 +139,6 @@ func _on_flag_set(flag_name: String, value: Variant) -> void:
 func _on_lo_interaction(interaction_type: String) -> void:
 	if interaction_type == "dialogue":
 		MentalStateManager.apply_event("met_celeste")
-
-
-func _on_zone_entered(zone_id: String) -> void:
-	# Map zone_id to beat — only fires on first entry (monologue_overlay handles dedup)
-	var beat_map := {
-		"zone_01_waking_sorrow":    "enter_zone_01",
-		"zone_02_manic_garden":     "enter_zone_02",
-		"zone_03_still_void":       "enter_zone_03",
-		"zone_04_cradle_of_ash":    "enter_zone_04",
-		"zone_05_laughing_labyrinth": "enter_zone_05",
-		"zone_06_limerent_archive": "enter_zone_06",
-		"zone_07_crossroads":       "enter_zone_07",
-	}
-	var beat: String = beat_map.get(zone_id, "")
-	if beat != "":
-		await get_tree().create_timer(1.5).timeout
-		trigger_beat(beat)
 
 
 func _on_player_died() -> void:

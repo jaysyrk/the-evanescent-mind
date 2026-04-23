@@ -15,7 +15,7 @@ func _ready() -> void:
 	zone_id              = "zone_02_manic_garden"
 	zone_display_name    = "The Manic Garden"
 	mental_state_event   = "zone_enter_manic_garden"
-	entry_monologue_beat = "game_start"
+	entry_monologue_beat = "enter_zone_02"
 	super()
 	_spawn_revelers()
 	projection_trigger.body_entered.connect(_on_projection_trigger)

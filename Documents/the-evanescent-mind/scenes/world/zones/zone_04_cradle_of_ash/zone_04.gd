@@ -17,7 +17,7 @@ func _ready() -> void:
 	zone_id              = "zone_04_cradle_of_ash"
 	zone_display_name    = "The Cradle of Ash"
 	mental_state_event   = "zone_enter_void"  # Shares void event: quiet grief
-	entry_monologue_beat = "game_start"
+	entry_monologue_beat = "enter_zone_04"
 	super()
 	_spawn_infants()
 	projection_trigger.body_entered.connect(_on_projection_trigger)
