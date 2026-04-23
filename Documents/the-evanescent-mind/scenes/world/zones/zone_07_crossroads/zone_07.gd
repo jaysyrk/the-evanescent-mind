@@ -28,11 +28,8 @@ func _on_threshold_gate(body: Node3D) -> void:
 	if not body.is_in_group("player"):
 		return
 	if GameState.all_pieces_collected():
-		get_tree().change_scene_to_file("res://scenes/world/the_threshold/threshold.tscn")
-	else:
-		NarrativeManager.trigger_custom(
-			"you can feel the threshold from here. but something's still missing. you're not done yet."
-		)
+                # Use ZoneManager to load threshold — index 7 in ZONE_PATHS
+                ZoneManager.load_zone(7)
 
 
 func _on_zone_entered() -> void:
