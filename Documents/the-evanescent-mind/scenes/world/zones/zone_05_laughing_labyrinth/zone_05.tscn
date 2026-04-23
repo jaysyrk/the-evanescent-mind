@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://zone_05_laughing_labyrinth"]
+[gd_scene load_steps=9 format=3 uid="uid://zone_05_laughing_labyrinth"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_entry"]
 size = Vector3(28, 4, 28)
@@ -23,6 +23,16 @@ radius = 3.2
 size = Vector3(6.0, 3.0, 1.0)
 
 [ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_4"]
+[ext_resource type="PackedScene" path="res://scenes/systems/anxiety_door.tscn" id="anxiety_door_scene"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_door_a"]
+size = Vector3(2.0, 3.0, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_door_b"]
+size = Vector3(2.0, 3.0, 0.15)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_door_c"]
+size = Vector3(2.0, 3.0, 0.15)
 
 [node name="Zone05LaughingLabyrinth" type="Node3D"]
 script = ExtResource("1")
@@ -80,6 +90,16 @@ pixel_size = 0.005
 billboard = 3
 
 [node name="AnxietyDoors" type="Node3D" parent="."]
+
+[node name="DoorA" parent="AnxietyDoors" instance=ExtResource("anxiety_door_scene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1.5, -4)
+door_label_text = "panic opens paths"
+
+[node name="DoorB" parent="AnxietyDoors" instance=ExtResource("anxiety_door_scene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1.5, -8)
+
+[node name="DoorC" parent="AnxietyDoors" instance=ExtResource("anxiety_door_scene")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -11)
 
 [node name="ProjectionTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -6)
