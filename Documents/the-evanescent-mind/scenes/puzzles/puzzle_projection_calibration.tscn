@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://puzzle_projection_calibration"]
+
+[ext_resource type="Script" path="res://scenes/puzzles/puzzle_projection_calibration.gd" id="1"]
+
+[node name="PuzzleProjectionCalibration" type="Node3D"]
+script = ExtResource("1")
+puzzle_id = "puzzle_projection_calibration"
+
+[node name="MemoryOrbs" type="Node3D" parent="."]

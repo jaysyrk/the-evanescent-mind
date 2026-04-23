@@ -12,11 +12,17 @@ size = Vector3(32, 0.2, 32)
 [sub_resource type="SphereShape3D" id="SphereShape3D_proj"]
 radius = 2.5
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
+radius = 3.2
+
 [ext_resource type="Script" path="res://scenes/world/zones/zone_02_manic_garden/zone_02.gd" id="1"]
 [ext_resource type="Script" path="res://scenes/world/zones/zone_02_manic_garden/hedonist.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/the_reveler/reveler.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/puzzles/puzzle_stimulation_overload.tscn" id="4"]
 
 [node name="Zone02ManicGarden" type="Node3D"]
 script = ExtResource("1")
+reveler_scene = ExtResource("3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
@@ -52,6 +58,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 [node name="TheHedonist" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 script = ExtResource("2")
+philosopher_name = "The Hedonist"
+piece_id = "piece_hedonist"
+dialogue_timeline = "res://assets/dialogic/timelines/hedonist_dialogue.json"
+compassion_threshold = 2.0
+
+[node name="InteractionArea" type="Area3D" parent="TheHedonist"]
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheHedonist/InteractionArea"]
+shape = SubResource("SphereShape3D_interact")
+
+[node name="PromptLabel" type="Label3D" parent="TheHedonist"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+text = "[E] Speak with The Hedonist"
+visible = false
+pixel_size = 0.005
+billboard = 3
 
 [node name="ProjectionTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -5)
@@ -63,6 +88,9 @@ monitoring = true
 shape = SubResource("SphereShape3D_proj")
 
 [node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="PuzzleStimulationOverload" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_ground")

@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3 uid="uid://puzzle_integration"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_platform"]
+height = 0.5
+radius = 2.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_platform"]
+top_radius = 2.5
+bottom_radius = 2.5
+height = 0.3
+
+[ext_resource type="Script" path="res://scenes/puzzles/puzzle_integration.gd" id="1"]
+
+[node name="PuzzleIntegration" type="Node3D"]
+script = ExtResource("1")
+puzzle_id = "puzzle_integration"
+
+[node name="MicroPlatforms" type="Node3D" parent="."]
+
+[node name="Platform1" type="Area3D" parent="MicroPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MicroPlatforms/Platform1"]
+mesh = SubResource("CylinderMesh_platform")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MicroPlatforms/Platform1"]
+shape = SubResource("CylinderShape3D_platform")
+
+[node name="Platform2" type="Area3D" parent="MicroPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -7)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MicroPlatforms/Platform2"]
+mesh = SubResource("CylinderMesh_platform")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MicroPlatforms/Platform2"]
+shape = SubResource("CylinderShape3D_platform")
+
+[node name="Platform3" type="Area3D" parent="MicroPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, -4)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MicroPlatforms/Platform3"]
+mesh = SubResource("CylinderMesh_platform")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MicroPlatforms/Platform3"]
+shape = SubResource("CylinderShape3D_platform")
+
+[node name="Platform4" type="Area3D" parent="MicroPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 4)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MicroPlatforms/Platform4"]
+mesh = SubResource("CylinderMesh_platform")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MicroPlatforms/Platform4"]
+shape = SubResource("CylinderShape3D_platform")
+
+[node name="Platform5" type="Area3D" parent="MicroPlatforms"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 7)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MicroPlatforms/Platform5"]
+mesh = SubResource("CylinderMesh_platform")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MicroPlatforms/Platform5"]
+shape = SubResource("CylinderShape3D_platform")

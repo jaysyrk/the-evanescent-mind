@@ -12,11 +12,24 @@ size = Vector3(32, 0.2, 32)
 [sub_resource type="SphereShape3D" id="SphereShape3D_proj"]
 radius = 2.5
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
+radius = 3.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_orb"]
+radius = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_orb"]
+radius = 0.4
+height = 0.8
+
 [ext_resource type="Script" path="res://scenes/world/zones/zone_06_limerent_archive/zone_06.gd" id="1"]
 [ext_resource type="Script" path="res://scenes/world/zones/zone_06_limerent_archive/theist.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/the_shade/shade.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/puzzles/puzzle_projection_calibration.tscn" id="4"]
 
 [node name="Zone06LimerentArchive" type="Node3D"]
 script = ExtResource("1")
+shade_scene = ExtResource("3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
@@ -49,8 +62,87 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 [node name="TheTheist" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 script = ExtResource("2")
+philosopher_name = "The Theist"
+piece_id = "piece_theist"
+dialogue_timeline = "res://assets/dialogic/timelines/theist_dialogue.json"
+compassion_threshold = 2.0
+
+[node name="InteractionArea" type="Area3D" parent="TheTheist"]
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheTheist/InteractionArea"]
+shape = SubResource("SphereShape3D_interact")
+
+[node name="PromptLabel" type="Label3D" parent="TheTheist"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+text = "[E] Speak with The Theist"
+visible = false
+pixel_size = 0.005
+billboard = 3
 
 [node name="MemoryOrbs" type="Node3D" parent="."]
+
+[node name="Orb1" type="Area3D" parent="MemoryOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 1, -6)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MemoryOrbs/Orb1"]
+mesh = SubResource("SphereMesh_orb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MemoryOrbs/Orb1"]
+shape = SubResource("SphereShape3D_orb")
+
+[node name="Orb2" type="Area3D" parent="MemoryOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -4)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MemoryOrbs/Orb2"]
+mesh = SubResource("SphereMesh_orb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MemoryOrbs/Orb2"]
+shape = SubResource("SphereShape3D_orb")
+
+[node name="Orb3" type="Area3D" parent="MemoryOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -12)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MemoryOrbs/Orb3"]
+mesh = SubResource("SphereMesh_orb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MemoryOrbs/Orb3"]
+shape = SubResource("SphereShape3D_orb")
+
+[node name="Orb4" type="Area3D" parent="MemoryOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 1, -7)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MemoryOrbs/Orb4"]
+mesh = SubResource("SphereMesh_orb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MemoryOrbs/Orb4"]
+shape = SubResource("SphereShape3D_orb")
+
+[node name="Orb5" type="Area3D" parent="MemoryOrbs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, -9)
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MemoryOrbs/Orb5"]
+mesh = SubResource("SphereMesh_orb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MemoryOrbs/Orb5"]
+shape = SubResource("SphereShape3D_orb")
 
 [node name="ProjectionTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
@@ -62,6 +154,8 @@ monitoring = true
 shape = SubResource("SphereShape3D_proj")
 
 [node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="PuzzleProjectionCalibration" parent="." instance=ExtResource("4")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_ground")

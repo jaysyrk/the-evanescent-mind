@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://puzzle_stillness"]
+
+[ext_resource type="Script" path="res://scenes/puzzles/puzzle_stillness.gd" id="1"]
+
+[node name="PuzzleStillness" type="Node3D"]
+script = ExtResource("1")
+puzzle_id = "puzzle_stillness"
+
+[node name="StillTimerLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+text = ""
+pixel_size = 0.006
+billboard = 3

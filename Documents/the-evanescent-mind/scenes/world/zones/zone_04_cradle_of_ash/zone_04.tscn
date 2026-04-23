@@ -15,11 +15,16 @@ radius = 2.5
 [sub_resource type="SphereShape3D" id="SphereShape3D_altar"]
 radius = 1.8
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
+radius = 3.2
+
 [ext_resource type="Script" path="res://scenes/world/zones/zone_04_cradle_of_ash/zone_04.gd" id="1"]
 [ext_resource type="Script" path="res://scenes/world/zones/zone_04_cradle_of_ash/antinatalist.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/the_infant_eternal/infant_eternal.tscn" id="3"]
 
 [node name="Zone04CradleOfAsh" type="Node3D"]
 script = ExtResource("1")
+infant_scene = ExtResource("3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
@@ -52,6 +57,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 [node name="TheAntinatalist" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 script = ExtResource("2")
+philosopher_name = "The Antinatalist"
+piece_id = "piece_antinatalist"
+dialogue_timeline = "res://assets/dialogic/timelines/antinatalist_dialogue.json"
+compassion_threshold = 1.5
+
+[node name="InteractionArea" type="Area3D" parent="TheAntinatalist"]
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheAntinatalist/InteractionArea"]
+shape = SubResource("SphereShape3D_interact")
+
+[node name="PromptLabel" type="Label3D" parent="TheAntinatalist"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+text = "[E] Speak with The Antinatalist"
+visible = false
+pixel_size = 0.005
+billboard = 3
 
 [node name="BirthAltar" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -10)

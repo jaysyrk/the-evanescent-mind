@@ -12,11 +12,17 @@ size = Vector3(32, 0.2, 32)
 [sub_resource type="SphereShape3D" id="SphereShape3D_proj"]
 radius = 2.5
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
+radius = 3.2
+
 [ext_resource type="Script" path="res://scenes/world/zones/zone_03_still_void/zone_03.gd" id="1"]
 [ext_resource type="Script" path="res://scenes/world/zones/zone_03_still_void/buddhist.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/the_absence/absence.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/puzzles/puzzle_stillness.tscn" id="4"]
 
 [node name="Zone03StillVoid" type="Node3D"]
 script = ExtResource("1")
+absence_scene = ExtResource("3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
@@ -49,6 +55,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 [node name="TheBuddhist" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 script = ExtResource("2")
+philosopher_name = "The Buddhist"
+piece_id = "piece_buddhist"
+dialogue_timeline = "res://assets/dialogic/timelines/buddhist_dialogue.json"
+compassion_threshold = 1.0
+
+[node name="InteractionArea" type="Area3D" parent="TheBuddhist"]
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheBuddhist/InteractionArea"]
+shape = SubResource("SphereShape3D_interact")
+
+[node name="PromptLabel" type="Label3D" parent="TheBuddhist"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+text = "[E] Speak with The Buddhist"
+visible = false
+pixel_size = 0.005
+billboard = 3
 
 [node name="ProjectionTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
@@ -60,6 +85,9 @@ monitoring = true
 shape = SubResource("SphereShape3D_proj")
 
 [node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="PuzzleStillness" parent="." instance=ExtResource("4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Ground"]
 mesh = SubResource("BoxMesh_ground")
