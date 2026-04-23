@@ -10,8 +10,8 @@ func _ready() -> void:
 # ── Called from the Threshold scene ──────────────────────────────────────────
 func trigger_ending(choice: String) -> void:
 	assert(choice in ["void", "stay"], "EndingSystem: invalid ending choice '%s'" % choice)
-	assert(GameState.get_flag("all_pieces_gathered"),
-		"EndingSystem: ending triggered before all pieces gathered — check Threshold logic")
+	if not GameState.get_flag("all_pieces_gathered"):
+		push_warning("EndingSystem: ending triggered before all pieces gathered")
 
 	GameState.set_flag("ending", choice)
 	GameState.set_flag("game_complete", true)

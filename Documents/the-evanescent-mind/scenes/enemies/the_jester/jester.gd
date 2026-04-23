@@ -59,7 +59,7 @@ func _teleport_away() -> void:
 	NarrativeManager.trigger_custom("you blinked and it was somewhere else. laughing.")
 
 
-func _on_player_attacked(_damage: float, _knockback: Vector3) -> void:
+func _on_player_attacked(_damage: float, _source: Node) -> void:
 	# Record that the player attacked — use this for mirrored attack
 	_last_player_attack = "attack"  # Would pull from animation name if available
 
@@ -74,8 +74,9 @@ func _attack() -> void:
 	if _player == null:
 		return
 	# Mirror slash — same timing as a typical player attack
-	_anim_player.play("attack" if _anim_player.has_animation("attack") else "RESET")
+	if anim != null and anim.has_animation("attack"):
+		anim.play("attack")
 	await get_tree().create_timer(0.25).timeout
-	_hitbox.enable_hit()
+	hitbox.enable_hit()
 	await get_tree().create_timer(0.2).timeout
-	_hitbox.disable_hit()
+	hitbox.disable_hit()

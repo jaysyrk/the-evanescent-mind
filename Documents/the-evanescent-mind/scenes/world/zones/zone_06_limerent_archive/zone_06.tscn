@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://zone_06_limerent_archive"]
+[gd_scene load_steps=7 format=3 uid="uid://zone_06_limerent_archive"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_entry"]
 size = Vector3(28, 4, 28)
@@ -31,6 +31,7 @@ height = 0.8
 size = Vector3(6.0, 3.0, 1.0)
 
 [ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_5"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/celeste/celeste_npc.tscn" id="celeste_scene_6"]
 
 [node name="Zone06LimerentArchive" type="Node3D"]
 script = ExtResource("1")
@@ -189,3 +190,7 @@ text = "[ continue ]"
 pixel_size = 0.006
 billboard = 3
 visible = false
+
+[node name="CelesteNPC" parent="." instance=ExtResource("celeste_scene_6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, -6)
+zone_id = "zone_06_limerent_archive"

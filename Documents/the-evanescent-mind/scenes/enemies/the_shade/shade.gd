@@ -35,8 +35,8 @@ func _check_passive() -> void:
 
 func _on_limerence_changed(level: float) -> void:
 	_is_passive = level >= LIMERENCE_PASSIVE_THRESHOLD
-	if _is_passive and _current_state == State.CHASE:
-		_current_state = State.IDLE
+	if _is_passive and _state == State.CHASE:
+		_state = State.IDLE
 
 
 func _physics_process(delta: float) -> void:
@@ -48,10 +48,11 @@ func _physics_process(delta: float) -> void:
 			MentalStateManager.mood -= PROXIMITY_MOOD_DRAIN * delta
 
 
-func _can_attack() -> bool:
+func _chase_tick(delta: float) -> void:
 	if _is_passive:
-		return false
-	return super()
+		_set_state(State.IDLE)
+		return
+	super(delta)
 
 
 func take_damage(amount: float, knockback_force: float, source_pos: Vector3) -> void:
@@ -74,4 +75,4 @@ func _attack() -> void:
 	# The Weight of Her — anxiety spike, no hitbox needed
 	MentalStateManager.anxiety += ANXIETY_ON_HIT
 	NarrativeManager.trigger_custom("she's right there and you can't — it's not her, but it looks like her.")
-	EventBus.player_damaged.emit(0.0, Vector3.ZERO)  # Zero damage, just signal for feedback
+	EventBus.player_damaged.emit(0.0, self)  # Zero damage, just signal for feedback

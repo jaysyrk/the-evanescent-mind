@@ -75,25 +75,26 @@ func take_damage(amount: float, knockback_force: float, source_pos: Vector3) -> 
 	_poise_count += 1
 	if _poise_count >= POISE_THRESHOLD:
 		_poise_count = 0
-		# Full stagger + knockback
 		velocity += dir * knockback_force
 		if _hp <= 0.0:
 			_die()
 		else:
 			_set_state(State.STAGGERED)
-			anim.play("hit")
+			if anim != null and anim.has_animation("hit"):
+				anim.play("hit")
 	else:
-		# Absorb hit — slight flinch visual but no stagger
 		velocity += dir * (knockback_force * 0.15)
 		if _hp <= 0.0:
 			_die()
 		else:
-			anim.play("flinch")
+			if anim != null and anim.has_animation("flinch"):
+				anim.play("flinch")
 
 
 # ── Attack: the Reaching Grab ─────────────────────────────────────────────────
 func _attack() -> void:
-	anim.play("attack_grab")
+	if anim != null and anim.has_animation("attack_grab"):
+		anim.play("attack_grab")
 	# Hitbox enabled mid-animation via AnimationPlayer track (or signal below)
 	await get_tree().create_timer(0.9).timeout   # long telegraph
 	if _state == State.ATTACK and not is_dead:

@@ -86,17 +86,18 @@ func _attack() -> void:
 	if _player == null:
 		return
 	# Rapid 3-hit combo
-	_anim_player.play("attack_combo")
+	if anim != null and anim.has_animation("attack_combo"):
+		anim.play("attack_combo")
 	await get_tree().create_timer(0.3).timeout
-	_hitbox.enable_hit()
+	hitbox.enable_hit()
 	await get_tree().create_timer(0.15).timeout
-	_hitbox.disable_hit()
+	hitbox.disable_hit()
 	await get_tree().create_timer(0.2).timeout
-	_hitbox.enable_hit()
+	hitbox.enable_hit()
 	await get_tree().create_timer(0.15).timeout
-	_hitbox.disable_hit()
+	hitbox.disable_hit()
 	if _in_frenzy:
 		await get_tree().create_timer(0.2).timeout
-		_hitbox.enable_hit()
+		hitbox.enable_hit()
 		await get_tree().create_timer(0.15).timeout
 		_hitbox.disable_hit()

@@ -65,7 +65,7 @@ func _tween_alpha(target: float) -> void:
 
 
 # Override: direct movement, ignore NavigationAgent
-func _move_toward_player(delta: float) -> void:
+func _move_toward_player() -> void:
 	if _player == null:
 		return
 	var dir := (_player.global_position - global_position).normalized()
@@ -80,10 +80,10 @@ func _attack() -> void:
 	# The Touch: drain, not knockback
 	NarrativeManager.trigger_custom("something cold. not pain exactly. like the will to move going missing.")
 	_draining = true
-	EventBus.player_damaged.emit(DRAIN_DPS, Vector3.ZERO)
+	EventBus.player_damaged.emit(DRAIN_DPS, self)
 	await get_tree().create_timer(DRAIN_DURATION / 2.0).timeout
 	if _draining:
-		EventBus.player_damaged.emit(DRAIN_DPS, Vector3.ZERO)
+		EventBus.player_damaged.emit(DRAIN_DPS, self)
 	await get_tree().create_timer(DRAIN_DURATION / 2.0).timeout
 	_draining = false
 	_reset_to_random_position()

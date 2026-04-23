@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 
 	var dist := global_position.distance_to(_player.global_position)
 	if dist > detect_range:
-		_current_state = State.IDLE
+		_set_state(State.IDLE)
 		velocity.x = 0
 		velocity.z = 0
 		move_and_slide()
@@ -53,8 +53,9 @@ func _physics_process(delta: float) -> void:
 		velocity.z = dir.z * chase_speed
 		move_and_slide()
 	else:
-		if _can_attack():
-			_do_attack()
+		if _attack_timer <= 0.0:
+			_set_state(State.ATTACK)
+			_attack()
 
 
 func _die() -> void:
@@ -66,6 +67,8 @@ func _die() -> void:
 func _attack() -> void:
 	if _player == null:
 		return
-	_hitbox.enable_hit()
+	hitbox.enable_hit()
 	await get_tree().create_timer(0.12).timeout
-	_hitbox.disable_hit()
+	hitbox.disable_hit()
+	_attack_timer = attack_cooldown
+	_set_state(State.CHASE)
