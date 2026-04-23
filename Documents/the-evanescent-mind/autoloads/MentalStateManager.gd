@@ -13,8 +13,8 @@ const ANXIETY_HIGH_THRESHOLD    :=  0.65
 const FOCUS_HYPERFOCUS_THRESHOLD:=  0.8
 const FOCUS_SCATTER_THRESHOLD   :=  0.25
 
-# Drift constants — how quickly each axis returns toward its resting value
-const MOOD_DRIFT_TARGET  := -0.25   # Slight depressive pull (the condition)
+# Drift targets — mutable so ritual pieces can permanently shift them
+var MOOD_DRIFT_TARGET: float  = -0.25   # Slight depressive pull (the condition)
 const MOOD_DRIFT_RATE    :=  0.008
 const ANXIETY_DRIFT_TARGET := 0.35
 const ANXIETY_DRIFT_RATE   := 0.015

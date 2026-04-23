@@ -1,0 +1,209 @@
+{
+  "events": [
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "portrait": "",
+      "text": "[The figure doesn't look up. He's been here since before the grey came in — you can tell by the way the fog bends around him, like it learned to respect the shape he makes.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "You're in pain."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "portrait": "",
+      "text": "[Not a question.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "You think ending it — all of it — is mercy. That if nothing can feel, nothing can suffer."
+    },
+    {
+      "event_id": "dialogic_020",
+      "choices": [
+        {
+          "text": "Yes. Isn't that obvious?",
+          "condition": "",
+          "destination": "choice_contempt"
+        },
+        {
+          "text": "I think it's the only honest conclusion.",
+          "condition": "",
+          "destination": "choice_engage"
+        },
+        {
+          "text": "What do you think?",
+          "condition": "",
+          "destination": "choice_listen"
+        }
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_contempt",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "Then you've decided suffering is the enemy. I wonder if that makes you afraid of it."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "portrait": "",
+      "text": "[He finally looks at you. His eyes are very calm. It's annoying.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "Come back when you've sat with it long enough to ask it a question."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "end_contempt"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_engage",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "Honest. I'll give you that. But conclusions from pain aren't conclusions — they're symptoms."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "portrait": "",
+      "text": "[You don't say anything. Neither does he, for a moment.]"
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "I've suffered. More than I'll tell you. I chose to carry it rather than refuse it. Not because I enjoy the weight. Because refusing it made me smaller."
+    },
+    {
+      "event_id": "dialogic_020",
+      "label": "engage_branch_2",
+      "choices": [
+        {
+          "text": "Carrying it doesn't make it right.",
+          "condition": "",
+          "destination": "engage_pushback"
+        },
+        {
+          "text": "I think I understand that. Even if I don't agree.",
+          "condition": "",
+          "destination": "engage_compassion"
+        }
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "engage_pushback",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "No. But neither does eliminating the one who carries it. You'd take the stone from every hand in the world and call that freedom."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "portrait": "",
+      "text": "[He picks up a stone from the ground and holds it out. You take it without knowing why. It's heavier than it should be.]"
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "engage_compassion",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "That's more than most give me. They usually either agree too quickly or argue too loudly."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "Hold that distinction carefully. It's the difference between wisdom and surrender."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_2"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "choice_listen",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "I think pain is the only honest teacher. Every shortcut around it leaves you softer in the places that matter."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "portrait": "",
+      "text": "[You watch him. He's not performing. That's what's unsettling.]"
+    },
+    {
+      "event_id": "dialogic_020",
+      "label": "listen_branch_2",
+      "choices": [
+        {
+          "text": "That sounds like rationalising endless misery.",
+          "condition": "",
+          "destination": "listen_challenge"
+        },
+        {
+          "text": "You actually believe that. You're not faking it.",
+          "condition": "",
+          "destination": "listen_recognition"
+        }
+      ]
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "listen_challenge",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "Maybe. Or maybe misery without meaning is just chemistry, and I chose to metabolise it differently."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "I won't convince you. I just want you to see that I'm not afraid of the same thing you are."
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_1"
+    },
+    {
+      "event_id": "dialogic_010",
+      "label": "listen_recognition",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "..."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "The Stoic",
+      "portrait": "",
+      "text": "No. I'm not. And you're the first person to say that plainly instead of trying to break it."
+    },
+    {
+      "event_id": "dialogic_010",
+      "character": "",
+      "portrait": "",
+      "text": "[Something shifts in the air. Very slightly. Like a window opening in a house that's been sealed for years.]"
+    },
+    {
+      "event_id": "dialogic_000",
+      "signal_name": "add_compassion_2"
+    }
+  ]
+}
