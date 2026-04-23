@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://the_hollow"]
+
+[ext_resource type="Script" path="res://scenes/enemies/the_hollow/hollow.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="3"]
+
+[node name="TheHollow" type="CharacterBody3D"]
+script = ExtResource("1")
+collision_layer = 2
+collision_mask = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.5
+target_desired_distance = 0.5
+
+[node name="Hitbox" type="Area3D" parent="."]
+script = ExtResource("2")
+collision_layer = 4
+collision_mask = 8
+is_enemy_hitbox = true
+damage = 18.0
+knockback_force = 3.0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0, 0.9, 1.2)
+
+[node name="Hurtbox" type="Area3D" parent="."]
+script = ExtResource("3")
+collision_layer = 8
+collision_mask = 4
+receives_player_hits = true
+receives_enemy_hits = false
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+
+[node name="DrainArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 1
+monitoring = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DrainArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

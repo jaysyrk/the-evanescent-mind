@@ -46,6 +46,7 @@ var _hp: float = 100.0
 
 
 func _ready() -> void:
+	add_to_group("player")
 	_hitbox.monitoring = false
 	_hurtbox.area_entered.connect(_on_hurtbox_entered)
 	EventBus.mental_state_changed.connect(_on_mental_state_changed)
@@ -173,6 +174,10 @@ func _regen_stamina(delta: float) -> void:
 	# Depressive: slower regen; Manic: faster but lower effective max (handled in take_damage)
 	var regen_mod := 1.0 - absf(MentalStateManager.mood) * 0.2
 	_stamina += stamina_regen * regen_mod * delta
+
+
+func _drain_stamina(amount: float) -> void:
+	_stamina -= amount
 
 
 # ── Damage ────────────────────────────────────────────────────────────────────
