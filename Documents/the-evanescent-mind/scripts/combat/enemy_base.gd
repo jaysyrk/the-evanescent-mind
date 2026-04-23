@@ -169,11 +169,14 @@ func _set_state(new_state: State) -> void:
 func _on_state_enter(state: State) -> void:
 	match state:
 		State.IDLE:
-			anim.play("idle")
+			if anim != null and anim.has_animation("idle"):
+				anim.play("idle")
 		State.PATROL:
-			anim.play("walk")
+			if anim != null and anim.has_animation("walk"):
+				anim.play("walk")
 		State.CHASE:
-			anim.play("run")
+			if anim != null and anim.has_animation("run"):
+				anim.play("run")
 		State.ATTACK:
 			_attack()
 		State.DEAD:
