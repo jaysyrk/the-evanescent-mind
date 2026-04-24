@@ -1,5 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://the_threshold_scene"]
 
+[ext_resource type="Script" path="res://scenes/world/the_threshold/threshold.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/npcs/celeste/celeste_npc.tscn" id="2"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_entry"]
 size = Vector3(20, 4, 20)
 
@@ -14,9 +17,6 @@ size = Vector3(30, 0.2, 30)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ground"]
 size = Vector3(30, 0.2, 30)
-
-[ext_resource type="Script" path="res://scenes/world/the_threshold/threshold.gd" id="1"]
-[ext_resource type="PackedScene" path="res://scenes/npcs/celeste/celeste_npc.tscn" id="2"]
 
 [node name="TheThreshold" type="Node3D"]
 script = ExtResource("1")
@@ -46,9 +46,8 @@ mesh = SubResource("BoxMesh_altar")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RitualAltar"]
 shape = SubResource("BoxShape3D_altar")
 
-[node name="CelesteNPC" type="Node3D" parent="."]
+[node name="CelesteNPC" parent="." instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -4)
-script = ExtResource("2")
 
 [node name="Ground" type="StaticBody3D" parent="."]
 

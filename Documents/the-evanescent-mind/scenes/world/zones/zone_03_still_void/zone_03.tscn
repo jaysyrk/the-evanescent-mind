@@ -1,5 +1,11 @@
 [gd_scene load_steps=6 format=3 uid="uid://zone_03_still_void"]
 
+[ext_resource type="Script" path="res://scenes/world/zones/zone_03_still_void/zone_03.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/world/zones/zone_03_still_void/buddhist.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/the_absence/absence.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/puzzles/puzzle_stillness.tscn" id="4"]
+[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_2"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_entry"]
 size = Vector3(28, 4, 28)
 
@@ -15,15 +21,8 @@ radius = 2.5
 [sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
 radius = 3.2
 
-[ext_resource type="Script" path="res://scenes/world/zones/zone_03_still_void/zone_03.gd" id="1"]
-[ext_resource type="Script" path="res://scenes/world/zones/zone_03_still_void/buddhist.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/the_absence/absence.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://scenes/puzzles/puzzle_stillness.tscn" id="4"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_exit_2"]
 size = Vector3(6.0, 3.0, 1.0)
-
-[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_2"]
 
 [node name="Zone03StillVoid" type="Node3D"]
 script = ExtResource("1")
@@ -78,7 +77,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 text = "[E] Speak with The Buddhist"
 visible = false
 pixel_size = 0.005
-billboard = 3
+billboard = 2
 
 [node name="ProjectionTrigger" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
@@ -119,5 +118,5 @@ shape = SubResource("BoxShape3D_exit_2")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 0)
 text = "[ continue ]"
 pixel_size = 0.006
-billboard = 3
+billboard = 2
 visible = false

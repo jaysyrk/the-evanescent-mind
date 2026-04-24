@@ -23,7 +23,7 @@ func _setup() -> void:
 	if orbs == null:
 		orbs = get_parent().get_node_or_null("MemoryOrbs")
 	if orbs == null:
-		push_error("PuzzleProjectionCalibration: MemoryOrbs node not found")
+		push_warning("PuzzleProjectionCalibration: MemoryOrbs not found — assign memory_orbs_node in Inspector")
 		return
 	for i in range(1, 6):
 		var orb: Area3D = orbs.get_node_or_null("Orb%d" % i)

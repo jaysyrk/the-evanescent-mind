@@ -109,9 +109,11 @@ func _on_state_enter(state: State) -> void:
 	match state:
 		State.IDLE, State.PATROL:
 			# The Hollow has no patrol animation — it drifts
+			if anim == null:
+				return
 			if anim.has_animation("drift"):
 				anim.play("drift")
-			else:
+			elif anim.has_animation("idle"):
 				anim.play("idle")
 		State.CHASE:
 			if anim.has_animation("walk"):

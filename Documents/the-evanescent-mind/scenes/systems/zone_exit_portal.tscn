@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://zone_exit_portal"]
 
+[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="1"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_portal"]
 size = Vector3(6.0, 3.0, 1.0)
 
 [sub_resource type="BoxMesh" id="BoxMesh_arch"]
 size = Vector3(6.0, 3.0, 0.15)
-
-[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="1"]
 
 [node name="ZoneExitPortal" type="Area3D"]
 script = ExtResource("1")
@@ -26,5 +26,5 @@ transparency = 0.7
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 0)
 text = "[ continue ]"
 pixel_size = 0.006
-billboard = 3
+billboard = 2
 visible = false

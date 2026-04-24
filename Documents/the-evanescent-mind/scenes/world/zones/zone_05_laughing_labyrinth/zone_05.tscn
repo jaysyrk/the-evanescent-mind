@@ -1,5 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://zone_05_laughing_labyrinth"]
 
+[ext_resource type="Script" path="res://scenes/world/zones/zone_05_laughing_labyrinth/zone_05.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/world/zones/zone_05_laughing_labyrinth/absurdist.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/the_jester/jester.tscn" id="3"]
+[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_4"]
+[ext_resource type="PackedScene" path="res://scenes/systems/anxiety_door.tscn" id="anxiety_door_scene"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_entry"]
 size = Vector3(28, 4, 28)
 
@@ -15,15 +21,8 @@ radius = 2.5
 [sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
 radius = 3.2
 
-[ext_resource type="Script" path="res://scenes/world/zones/zone_05_laughing_labyrinth/zone_05.gd" id="1"]
-[ext_resource type="Script" path="res://scenes/world/zones/zone_05_laughing_labyrinth/absurdist.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/the_jester/jester.tscn" id="3"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_exit_4"]
 size = Vector3(6.0, 3.0, 1.0)
-
-[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_4"]
-[ext_resource type="PackedScene" path="res://scenes/systems/anxiety_door.tscn" id="anxiety_door_scene"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_door_a"]
 size = Vector3(2.0, 3.0, 0.15)
@@ -87,7 +86,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 text = "[E] Speak with The Absurdist"
 visible = false
 pixel_size = 0.005
-billboard = 3
+billboard = 2
 
 [node name="AnxietyDoors" type="Node3D" parent="."]
 
@@ -137,5 +136,5 @@ shape = SubResource("BoxShape3D_exit_4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 0)
 text = "[ continue ]"
 pixel_size = 0.006
-billboard = 3
+billboard = 2
 visible = false

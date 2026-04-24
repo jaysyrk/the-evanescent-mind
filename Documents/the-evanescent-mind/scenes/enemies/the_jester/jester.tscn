@@ -1,5 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://the_jester"]
 
+[ext_resource type="Script" path="res://scenes/enemies/the_jester/jester.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="3"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1"]
 radius = 0.36
 height = 1.85
@@ -19,10 +23,6 @@ radius = 0.65
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hurtbox"]
 radius = 0.5
-
-[ext_resource type="Script" path="res://scenes/enemies/the_jester/jester.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/combat/hitbox.gd" id="2"]
-[ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="3"]
 
 [node name="TheJester" type="CharacterBody3D"]
 script = ExtResource("1")

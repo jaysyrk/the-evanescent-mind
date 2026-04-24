@@ -1,5 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://celeste_npc_base"]
 
+[ext_resource type="Script" path="res://scenes/npcs/celeste/celeste_npc.gd" id="1"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1"]
 radius = 0.35
 height = 1.75
@@ -17,8 +19,6 @@ height = 1.75
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1"]
 radius = 3.2
-
-[ext_resource type="Script" path="res://scenes/npcs/celeste/celeste_npc.gd" id="1"]
 
 [node name="CelesteNPC" type="CharacterBody3D"]
 script = ExtResource("1")

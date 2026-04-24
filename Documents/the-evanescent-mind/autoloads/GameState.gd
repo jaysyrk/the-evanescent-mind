@@ -24,6 +24,12 @@ var flags: Dictionary = {
 	"piece_nihilist":     false,
 	"all_pieces_gathered": false,
 
+	# Puzzle completion
+	"puzzle_projection_calibration_solved": false,
+	"puzzle_stillness_solved":              false,
+	"puzzle_stimulation_overload_solved":   false,
+	"puzzle_integration_solved":            false,
+
 	# Philosopher encounters
 	"met_stoic":        false,
 	"met_hedonist":     false,
@@ -63,10 +69,10 @@ func set_flag(flag_name: String, value: Variant) -> void:
 	_check_derived_flags()
 
 
-func get_flag(flag_name: String) -> Variant:
+func get_flag(flag_name: String) -> bool:
 	if not flags.has(flag_name):
 		push_warning("GameState.get_flag: unknown flag '%s'" % flag_name)
-		return null
+		return false
 	return flags[flag_name]
 
 

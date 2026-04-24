@@ -1,5 +1,5 @@
 extends "res://scripts/systems/zone_base.gd"
-## Zone 7 — The Crossroads.
+## Zone 7 -- The Crossroads.
 ## All paths from all zones meet here. No enemy. No combat.
 ## The Nihilist stands at the centre. The Threshold is visible from here.
 ## Mental state converges toward a quiet, still centre. Focus rises.
@@ -28,8 +28,10 @@ func _on_threshold_gate(body: Node3D) -> void:
 	if not body.is_in_group("player"):
 		return
 	if GameState.all_pieces_collected():
-                # Use ZoneManager to load threshold — index 7 in ZONE_PATHS
-                ZoneManager.load_zone(7)
+		# Use ZoneManager to load threshold -- index 7 in ZONE_PATHS
+		ZoneManager.load_zone(7)
+	else:
+		NarrativeManager.trigger_custom("you can feel the threshold from here. but something's still missing. you're not done yet.")
 
 
 func _on_zone_entered() -> void:

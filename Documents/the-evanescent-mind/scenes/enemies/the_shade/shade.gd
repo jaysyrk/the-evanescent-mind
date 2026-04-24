@@ -25,7 +25,7 @@ func _ready() -> void:
 	stagger_duration = 0.4
 	attack_cooldown  = 3.0
 	super()
-	LimerenceTracker.limerence_changed.connect(_on_limerence_changed)
+	EventBus.limerence_changed.connect(_on_limerence_changed)
 	_check_passive()
 
 
@@ -41,7 +41,7 @@ func _on_limerence_changed(level: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	super(delta)
-	if _player != null and _current_state != State.DEAD:
+	if _player != null and _state != State.DEAD:
 		var dist := global_position.distance_to(_player.global_position)
 		if dist < detect_range:
 			LimerenceTracker.limerence_level += PROXIMITY_LIMERENCE_RATE * delta

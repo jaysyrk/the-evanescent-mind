@@ -36,7 +36,7 @@ func _on_monologue(text: String, tone: String, duration: float) -> void:
 	# Fade in
 	tween.tween_property(self, "modulate:a", 1.0, 0.4)
 	# Typewriter effect via visible_ratio
-	var char_duration := display_text.length() * style["speed"]
+	var char_duration: float = display_text.length() * float(style["speed"])
 	tween.tween_property(label, "visible_ratio", 1.0, char_duration)
 	# Hold
 	tween.tween_interval(duration)

@@ -3,11 +3,11 @@ extends Control
 ## Dev tool only. Hidden in release builds.
 
 
-@onready var mood_bar:     ProgressBar = $Grid/MoodBar
-@onready var anxiety_bar:  ProgressBar = $Grid/AnxietyBar
-@onready var focus_bar:    ProgressBar = $Grid/FocusBar
-@onready var limerence_bar:ProgressBar = $Grid/LimerenceBar
-@onready var tone_label:   Label       = $ToneLabel
+@onready var mood_bar:     ProgressBar = $Panel/VBox/Grid/MoodBar
+@onready var anxiety_bar:  ProgressBar = $Panel/VBox/Grid/AnxietyBar
+@onready var focus_bar:    ProgressBar = $Panel/VBox/Grid/FocusBar
+@onready var limerence_bar:ProgressBar = $Panel/VBox/Grid/LimerenceBar
+@onready var tone_label:   Label       = $Panel/VBox/ToneLabel
 
 
 func _process(_delta: float) -> void:

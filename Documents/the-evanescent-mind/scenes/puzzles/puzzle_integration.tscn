@@ -1,5 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://puzzle_integration"]
 
+[ext_resource type="Script" path="res://scenes/puzzles/puzzle_integration.gd" id="1"]
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_platform"]
 height = 0.5
 radius = 2.5
@@ -8,8 +10,6 @@ radius = 2.5
 top_radius = 2.5
 bottom_radius = 2.5
 height = 0.3
-
-[ext_resource type="Script" path="res://scenes/puzzles/puzzle_integration.gd" id="1"]
 
 [node name="PuzzleIntegration" type="Node3D"]
 script = ExtResource("1")

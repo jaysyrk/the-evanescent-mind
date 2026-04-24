@@ -100,4 +100,4 @@ func _attack() -> void:
 		await get_tree().create_timer(0.2).timeout
 		hitbox.enable_hit()
 		await get_tree().create_timer(0.15).timeout
-		_hitbox.disable_hit()
+		hitbox.disable_hit()

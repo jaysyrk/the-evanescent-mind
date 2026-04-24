@@ -1,4 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://the_absence"]
+[gd_scene load_steps=8 format=3 uid="uid://the_absence"]
+
+[ext_resource type="Script" path="res://scenes/enemies/the_absence/absence.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_1"]
 radius = 0.3
@@ -18,9 +22,6 @@ height = 2.1
 [sub_resource type="SphereShape3D" id="SphereShape3D_hurtbox"]
 radius = 0.5
 
-[ext_resource type="Script" path="res://scenes/enemies/the_absence/absence.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="2"]
-
 [node name="TheAbsence" type="CharacterBody3D"]
 script = ExtResource("1")
 
@@ -39,7 +40,18 @@ shape = SubResource("CapsuleShape3D_1")
 [node name="Hurtbox" type="Area3D" parent="."]
 collision_layer = 8
 collision_mask = 4
-script = ExtResource("2")
+script = ExtResource("3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 shape = SubResource("SphereShape3D_hurtbox")
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("2")
+is_enemy_hitbox = true
+damage = 12.0
+knockback_force = 2.0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

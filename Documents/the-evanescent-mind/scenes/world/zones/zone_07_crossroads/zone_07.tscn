@@ -1,5 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://zone_07_crossroads"]
 
+[ext_resource type="Script" path="res://scenes/world/zones/zone_07_crossroads/zone_07.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/world/zones/zone_07_crossroads/nihilist.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/puzzles/puzzle_integration.tscn" id="3"]
+[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_6"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_entry"]
 size = Vector3(40, 4, 40)
 
@@ -18,14 +23,8 @@ radius = 3.0
 [sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
 radius = 3.2
 
-[ext_resource type="Script" path="res://scenes/world/zones/zone_07_crossroads/zone_07.gd" id="1"]
-[ext_resource type="Script" path="res://scenes/world/zones/zone_07_crossroads/nihilist.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/puzzles/puzzle_integration.tscn" id="3"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_exit_6"]
 size = Vector3(6.0, 3.0, 1.0)
-
-[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_6"]
 
 [node name="Zone07Crossroads" type="Node3D"]
 script = ExtResource("1")
@@ -71,7 +70,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 text = "[E] Speak with The Nihilist"
 visible = false
 pixel_size = 0.005
-billboard = 3
+billboard = 2
 
 [node name="ThresholdGate" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -18)
@@ -120,5 +119,5 @@ shape = SubResource("BoxShape3D_exit_6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 0)
 text = "[ continue ]"
 pixel_size = 0.006
-billboard = 3
+billboard = 2
 visible = false

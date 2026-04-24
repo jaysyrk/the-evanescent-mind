@@ -1,5 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://zone_04_cradle_of_ash"]
 
+[ext_resource type="Script" path="res://scenes/world/zones/zone_04_cradle_of_ash/zone_04.gd" id="1"]
+[ext_resource type="Script" path="res://scenes/world/zones/zone_04_cradle_of_ash/antinatalist.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/the_infant_eternal/infant_eternal.tscn" id="3"]
+[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_3"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_entry"]
 size = Vector3(28, 4, 28)
 
@@ -18,14 +23,8 @@ radius = 1.8
 [sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
 radius = 3.2
 
-[ext_resource type="Script" path="res://scenes/world/zones/zone_04_cradle_of_ash/zone_04.gd" id="1"]
-[ext_resource type="Script" path="res://scenes/world/zones/zone_04_cradle_of_ash/antinatalist.gd" id="2"]
-[ext_resource type="PackedScene" path="res://scenes/enemies/the_infant_eternal/infant_eternal.tscn" id="3"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_exit_3"]
 size = Vector3(6.0, 3.0, 1.0)
-
-[ext_resource type="Script" path="res://scripts/systems/zone_exit_portal.gd" id="portal_script_3"]
 
 [node name="Zone04CradleOfAsh" type="Node3D"]
 script = ExtResource("1")
@@ -80,7 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 text = "[E] Speak with The Antinatalist"
 visible = false
 pixel_size = 0.005
-billboard = 3
+billboard = 2
 
 [node name="BirthAltar" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -10)
@@ -136,5 +135,5 @@ shape = SubResource("BoxShape3D_exit_3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.0, 0)
 text = "[ continue ]"
 pixel_size = 0.006
-billboard = 3
+billboard = 2
 visible = false

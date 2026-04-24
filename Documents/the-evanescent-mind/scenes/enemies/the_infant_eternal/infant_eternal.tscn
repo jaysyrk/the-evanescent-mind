@@ -1,5 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://the_infant_eternal"]
 
+[ext_resource type="Script" path="res://scenes/enemies/the_infant_eternal/infant_eternal.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/combat/hitbox.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="3"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_1"]
 radius = 0.28
 height = 0.56
@@ -18,10 +22,6 @@ radius = 0.4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_hurtbox"]
 radius = 0.32
-
-[ext_resource type="Script" path="res://scenes/enemies/the_infant_eternal/infant_eternal.gd" id="1"]
-[ext_resource type="Script" path="res://scripts/combat/hitbox.gd" id="2"]
-[ext_resource type="Script" path="res://scripts/combat/hurtbox.gd" id="3"]
 
 [node name="TheInfantEternal" type="CharacterBody3D"]
 script = ExtResource("1")

@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 	# Adjust required duration based on focus (high focus = shorter)
 	_required_duration = BASE_STILL_DURATION * (1.0 - MentalStateManager.focus * 0.4)
 
-	var speed := _player_ref.velocity.length()
+	var speed: float = (_player_ref as CharacterBody3D).velocity.length()
 	if speed < VELOCITY_THRESHOLD:
 		_still_elapsed += delta
 		if still_timer_label:

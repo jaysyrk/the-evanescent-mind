@@ -52,7 +52,7 @@ var _bob_offset: float = 0.0
 func _ready() -> void:
 	_interact_area.body_entered.connect(_on_player_near)
 	_interact_area.body_exited.connect(_on_player_left)
-	LimerenceTracker.limerence_changed.connect(_on_limerence_changed)
+	EventBus.limerence_changed.connect(_on_limerence_changed)
 	_limerence = LimerenceTracker.limerence_level
 	_update_visibility()
 
@@ -128,7 +128,7 @@ func _drift_away() -> void:
 	var player := get_tree().get_first_node_in_group("player")
 	if player == null:
 		return
-	var dir := (global_position - player.global_position).normalized()
+	var dir: Vector3 = (global_position - (player as Node3D).global_position).normalized()
 	var tween := create_tween()
 	tween.tween_property(self, "global_position",
 		global_position + dir * 3.0, 2.5).set_trans(Tween.TRANS_SINE)
